@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Recursive:slnt,wght,CASL,CRSV,MONO@-15..0,300..800,0..1,0..1,0..1&display=swap");
+
+:root {
+    /* set variation axis values */
+    --mono: "MONO" 0; /* Monospace: Sans (natural-width) or Mono (fixed-width) */
+    --casl: "CASL" 0; /* Casual: Linear to Casual */
+    --wght: "wght" 600; /* Weight: Light to ExtraBlack; usually set with `font-weight` */
+    --slnt: "slnt" 0; /* Slant: 0 to -15 degrees, auto cursive at -14 */
+    --CRSV: "CRSV" 0.5; /* Cursive: always roman (0), auto substitution (.5), or always cursive (1) */
+    --ratio: 1.5;
+    --s-5: calc(var(--s-4) / var(--ratio));
+    --s-4: calc(var(--s-3) / var(--ratio));
+    --s-3: calc(var(--s-2) / var(--ratio));
+    --s-2: calc(var(--s-1) / var(--ratio));
+    --s-1: calc(var(--s0) / var(--ratio));
+    --s0: 1rem;
+    --mobile-font: 17px;
+    --s1: calc(var(--s0) * var(--ratio));
+    --s2: calc(var(--s1) * var(--ratio));
+    --s3: calc(var(--s2) * var(--ratio));
+    --s4: calc(var(--s3) * var(--ratio));
+    --s5: calc(var(--s4) * var(--ratio));
+    font-size: 20px;
+    --jeans-blue: #182635;
+    --deep-blue: #0e141b;
+    --sun-yellow: #feffb0ff;
+    --water-blue: #617bff;
+  }
+* {
+    font-variation-settings: var(--mono), var(--casl), var(--wght), var(--slnt),
+        var(--crsv);
+    font-family: Recursive, sans-serif;
+}
+body {
+    background-color: var(--jeans-blue);
+}
+.sidebar-header {
+    height: 3rem;
+    position: sticky;
+    top: 0;
+}
+.sidebar-header_jeans-blue {
+    background-color: var(--jeans-blue);
+}
+.sidebar-header_transparent {
+    background-color: none;
+}
+.sidebar-header_deep-blue {
+    background-color: var(--deep-blue);
+}
+.way-logo {
+  padding: 1rem;
+  display: inline-flex;
+  flex-direction: row;
+  text-decoration: none;
+}
+.way-logo__background {
+    width: 1.5rem;
+    padding-left: 1.5rem;
+}
+.way-logo_sun-yellow {
+  color: #feffb0ff;
+}
+.way-logo__way {
+    text-align: center;
+    vertical-align: middle;
+}
+.way-logo__of-grid {
+    display: flex;
+    flex-direction: column;
+}
+.way-logo__of {
+    text-align: center;
+    font-size: var(--s-1);
+}
+.way-logo__the {
+    text-align: center;
+    font-size: var(--s-1);
+}
+.menu-icon {
+    width: 1.6rem;
+    height: 1.4rem;
+    position: absolute;
+    top: .5rem;
+    left: calc(100vw - .5rem - 1.3rem - 1rem);
+    z-index: 999;
+    transition: all .5s ease-out;
+}
+
+    .menu-icon:hover {
+      cursor: pointer;
+    }
+  .menu-icon div {
+    background-color: white;
+    height: .2rem;
+    width: 1.3rem;
+    margin: .2rem;
+    border-radius: 3px;
+    transition: all .5s ease-out;
+  }
+  .menu-icon:hover div {
+    background-color: gray;
+  }
+  .menu-close {
+    width: 1.84rem;
+    transform: translateX(calc(-100vw + .5rem + 1.3rem + 1rem + .7rem));
+  }
+  .top-close {
+    transform: translateY(.4rem) rotate(45deg);
+    width: 1.84rem;
+    background-color: white;
+  }
+  .middle-close {
+    opacity: 0;
+  }
+  .bottom-close {
+    transform: translateY(-.4rem) rotate(-45deg);
+    width: 1.84rem;
+    background-color: white;
+  }
+  .slideout {
+    background-color: black;
+    width: 100vw;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s ease-out;
+    padding-top: 3rem;
+    height: calc(100vh - 3rem - 6.5rem + 2.9rem);
+    /*height: calc(100vh - 3rem - 6.5rem + 3rem);*/
+  }
+  /*
+  .slideout {
+    height: 100vh;
+    margin-top: -100vh;
+  }
+  */
+  
+  /*
+  html, body, .slideout {
+    height: 100%;
+    min-height: 100vh;
+  }
+  */
+  .slideout-open {
+    background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    opacity: 100%;
+    visibility: visible;
+    transform: translateY(-6.5rem);
+  }
+  .slideout__list {
+    margin-top: 3rem;
+    margin-bottom: 0;
+  }
+  .slideout__list__item {
+    color: white;
+    display: block;
+    width: fit-content;
+    margin-top: var(--s0);
+    margin-bottom: var(--s0);
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.847);
+    /*background-color: #182635b0;*/
+    box-sizing: border-box;
+    padding: var(--s-3);
+    border-radius: 10px;
+  }
+  .slideout__list__item:hover {
+      color: gray;
+      cursor: pointer;
+    }
+    
+.static-nav {
+    background-color: var(--jeans-blue);
+    padding-top: var(--s2);
+    padding-bottom: var(--s3);
+}
+.static-nav__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 0;
+    margin-top: var(--s-1);
+    margin-bottom: var(--s-1);
+}
+.static-nav__list__item {
+    color: white;
+    text-decoration: none;
+}
+.static-nav__list__item:hover {
+    color: gray;
+    cursor: pointer;
+  }
+.way-h1 {
+    color: white;
+    font-size: var(--s2);
+    padding-left: var(--s-1);
+    padding-right: var(--s-1);
+    margin: 0;
+    font-weight: 500;
+}
+.tutorial {
+    background-color: var(--deep-blue);
+    padding-top: var(--s2);
+    padding-bottom: var(--s2);
+}
+.tutorial__img {
+    width: calc(100% - 2 * var(--s-1));
+    padding: var(--s-1);
+}
+.tutorial__p {
+    color: white;
+    padding-left: var(--s-1);
+    padding-right: var(--s-1);
+    font-size: var(--mobile-font);
+    line-height: calc(16px * 1.8);
+    margin-top: calc(16px * 1.8);
+    margin-bottom: calc(16px * 1.8);
+}
+.tutorial__p__a {
+    color: var(--water-blue);
+    text-decoration: none;
+    font-weight: 800;
+}
+.tutorial__p__a:hover {
+    text-decoration: underline;
+}
+.tutorial__h2 {
+    color: var(--water-blue);
+    padding-left: var(--s-1);
+    padding-right: var(--s-1);
+    text-decoration: none;
+}
+.tutorial__h2__a {
+    color: var(--water-blue);
+    padding-left: var(--s-1);
+    padding-right: var(--s-1);
+    text-decoration: none;
+}
+.tutorial__h2__a::after {
+    content: "🔗";
+    display: inline-block; /* to get rid of underline */
+    text-decoration: none;
+}
+.tutorial__h2__a:hover {
+    text-decoration: underline;
+}
+.tutorial__pre {
+    color: lightblue;
+    padding-left: var(--s-1);
+    padding-right: var(--s-1);
+    font-size: var(--mobile-font)
+}
+
+  
+
+
+
+
+
