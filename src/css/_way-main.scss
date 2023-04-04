@@ -1,0 +1,10 @@
+@use 'utils';
+
+.way-main {
+    background-color: var(--deep-blue);
+    
+    @include utils.breakpoint(large) {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+}

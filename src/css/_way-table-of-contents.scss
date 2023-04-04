@@ -1,0 +1,30 @@
+@use 'utils';
+
+.way-table-of-contents {
+    display: none;
+    color: white;
+    width: 250px;
+    grid-column: 2;
+    margin-top: 0;
+    margin-right: 2rem;
+    padding-top: calc(var(--s2) + 3rem);
+
+    @include utils.breakpoint(large) {
+        display: block;
+    }
+}
+.way-table-of-contents__title {
+    font-family: Roboto, sans-serif;
+    font-size: .7rem;
+    font-weight: 500;
+    letter-spacing: .16rem;
+}
+.way-table-of-contents__item {
+    color: var(--stone-gray);
+    display: block;
+    text-decoration: none;
+    font-size: .7rem;
+    margin-bottom: 1rem;
+}
+
+

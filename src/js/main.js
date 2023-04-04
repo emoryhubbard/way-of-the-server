@@ -13,27 +13,27 @@ function toggleButton(e) {
 }
 
 function setHeaderBackground() {
-    const header = qs('.sidebar-header');
-    const staticNav = qs('.static-nav');
+    const header = qs('.way-sticky-header');
+    const staticNav = qs('.way-static-header');
     const transitionY = staticNav.offsetTop + staticNav.clientHeight;
 
     if (window.pageYOffset < transitionY - header.clientHeight
-        && !header.classList.contains('sidebar-header_jeans-blue')) {
-        toggle('.sidebar-header', 'sidebar-header_jeans-blue');
-        header.classList.remove('sidebar-header_transparent');
-        header.classList.remove('sidebar-header_deep-blue');
+        && !header.classList.contains('way-sticky-header_jeans-blue')) {
+        toggle('.way-sticky-header', 'way-sticky-header_jeans-blue');
+        header.classList.remove('way-sticky-header_transparent');
+        header.classList.remove('way-sticky-header_deep-blue');
     }
     if (window.pageYOffset >= transitionY - header.clientHeight
         && window.pageYOffset <= transitionY
-        && !header.classList.contains('sidebar-header_transparent')) {
-        toggle('.sidebar-header', 'sidebar-header_transparent');
-        header.classList.remove('sidebar-header_jeans-blue');
-        header.classList.remove('sidebar-header_deep-blue');
+        && !header.classList.contains('way-sticky-header_transparent')) {
+        toggle('.way-sticky-header', 'way-sticky-header_transparent');
+        header.classList.remove('way-sticky-header_jeans-blue');
+        header.classList.remove('way-sticky-header_deep-blue');
     }
     if (window.pageYOffset > transitionY
-        && !header.classList.contains('sidebar-header_deep-blue')) {
-        toggle('.sidebar-header', 'sidebar-header_deep-blue');
-        header.classList.remove('sidebar-header_transparent');
-        header.classList.remove('sidebar-header_jeans-blue');
+        && !header.classList.contains('way-sticky-header_deep-blue')) {
+        toggle('.way-sticky-header', 'way-sticky-header_deep-blue');
+        header.classList.remove('way-sticky-header_transparent');
+        header.classList.remove('way-sticky-header_jeans-blue');
     }
 }

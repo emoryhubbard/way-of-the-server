@@ -1,0 +1,40 @@
+@use 'utils';
+
+.way-static-header {
+    background-color: var(--jeans-blue);
+    padding-top: var(--s2);
+    padding-bottom: var(--s3);
+}
+.way-static-header__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 0;
+    margin-top: var(--s-1);
+    margin-bottom: var(--s-1);
+    
+    @include utils.breakpoint(large) {
+        display: none;
+    }
+}
+.way-static-header__list__item {
+    color: white;
+    text-decoration: none;
+}
+.way-static-header__list__item:hover {
+    color: gray;
+    cursor: pointer;
+  }
+.way-static-header__h1 {
+    color: white;
+    font-size: var(--s2);
+    padding-left: var(--s0);
+    padding-right: var(--s0);
+    margin: 0;
+    font-weight: 500;
+
+    @include utils.breakpoint(medium) {
+        padding-left: var(--s2);
+        padding-right: var(--s2);
+    }
+}

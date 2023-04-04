@@ -1,0 +1,103 @@
+@use 'utils';
+@use 'font';
+
+:root {
+    @include utils.breakpoint(small) {
+        --tutorial-padding: var(--s0);
+    }
+    @include utils.breakpoint(medium) {
+        --tutorial-padding: var(--s2);
+    }
+    --tutorial-max-width: 37rem; // found to be similar to calc(60ch + 2 * var(--tutorial-padding));
+    --tutorial__p-spacing: 1.4rem;
+}
+
+.tutorial { //remember to remove pad
+    background-color: var(--deep-blue);
+    padding-top: calc(var(--s2) + 3rem);
+    padding-bottom: var(--s2);
+    grid-column: 1;
+    grid-row: 1;
+}
+.tutorial__img {
+    width: calc(100% - 2 * var(--tutorial-padding));
+    max-width: 300px;
+    padding-left: var(--tutorial-padding);
+    padding-right: var(--tutorial-padding);
+    display: block;
+    margin: auto;
+}
+.tutorial__p {
+    color: white;
+    padding-left: var(--tutorial-padding);
+    padding-right: var(--tutorial-padding);
+    font-family: Quicksand, sans-serif;
+    font-weight: 600;
+    font-size: var(--body-copy);
+    line-height: 1.7em; // similar to calc(16px * 1.8);
+    margin-top: var(--tutorial__p-spacing);
+    margin-bottom: var(--tutorial__p-spacing);
+    max-width: var(--tutorial-max-width);
+    margin-left: auto;
+    margin-right: auto;
+}
+.tutorial__p__a {
+    color: var(--water-blue);
+    text-decoration: none;
+    font-weight: 800;
+}
+.tutorial__p__a:hover {
+    text-decoration: underline;
+}
+.tutorial__h2__a {
+    color: var(--water-blue);
+    font-size: var(--s1);
+    max-width: fit-content;
+    display: block;
+    text-decoration: none;
+}
+/*
+.tutorial__h2 {
+    color: var(--water-blue);
+    padding-left: var(--tutorial-padding);
+    padding-right: var(--tutorial-padding);
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration: none;
+    max-width: var(--tutorial-max-width);
+}
+*/
+/*
+.tutorial__h2__a::after {
+    content: "🔗";
+    display: inline-block; // to get rid of underline
+    text-decoration: none;
+}*/
+.tutorial__h2 {
+    color: var(--water-blue);
+    padding-left: var(--tutorial-padding);
+    padding-right: var(--tutorial-padding);
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration: none;
+    max-width: var(--tutorial-max-width);
+}
+.tutorial__h2__a::after {
+    content: "🔗";
+    display: inline-block; // to get rid of underline
+    text-decoration: none;
+}
+.tutorial__h2:hover {
+    text-decoration: underline;
+}
+.tutorial__pre {
+    color: lightblue;
+    padding-left: var(--tutorial-padding);
+    padding-right: var(--tutorial-padding);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: var(--tutorial__p-spacing);
+    margin-bottom: var(--tutorial__p-spacing);
+    font-size: var(--body-copy);
+    max-width: var(--tutorial-max-width);
+}

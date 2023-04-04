@@ -1,0 +1,29 @@
+@use 'utils';
+
+.way-logo {
+    padding: var(--s0);
+    display: inline-flex;
+    flex-direction: row;
+    text-decoration: none;
+    padding-left: var(--tutorial-padding);
+    padding-right: var(--tutorial-padding);
+  }
+  .way-logo_sun-yellow {
+    color: #feffb0ff;
+  }
+  .way-logo__way {
+      text-align: center;
+      vertical-align: middle;
+  }
+  .way-logo__of-grid {
+      display: flex;
+      flex-direction: column;
+  }
+  .way-logo__of {
+      text-align: center;
+      font-size: var(--s-1);
+  }
+  .way-logo__the {
+      text-align: center;
+      font-size: var(--s-1);
+  }
