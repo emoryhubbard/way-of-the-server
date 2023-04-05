@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <script type="module" src="/@vite/client"></script>
+
+        <title>The Way of the Server</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+        <div class="way-sticky-header">
+          <ul class="way-sticky-header__site-nav">
+            <a href="#" class="way-logo way-sticky-header__site-nav__way-logo">
+              <span class="way-logo__way way-logo_sun-yellow">Way</span>
+              <div class="way-logo__of-grid">
+                <div class="way-logo__of way-logo_sun-yellow">of</div>
+                <div class="way-logo__the way-logo_sun-yellow">the</div>
+              </div>
+              <span class="way-logo__server way-logo_sun-yellow">Server</span>
+            </a><a href="#" class="way-sticky-header__site-nav__item">Home</a>
+            <a href="#" class="way-sticky-header__site-nav__item">The Way</a><a href="#" class="way-sticky-header__site-nav__item">About</a>
+          </ul>
+          <ul class="way-sticky-header__github-nav">
+            <a href="#" class="way-sticky-header__github-nav__item">More Repos</a>
+            <a class="way-sticky-header__github-nav__has-img" href="#"><img  class="way-sticky-header__github-nav__img" src="/images/github-mark-white.png" alt="GitHub Logo"></a>
+          </ul>
+          <div class="menu-icon">
+            <div class="top"></div> <!-- ❌ ☰ × ― ─ ━ │ ╱ ╲ --->
+            <div class="middle"></div>
+            <div class="bottom"></div>
+          </div>
+          <nav class="slideout">
+            <ul class="slideout__list">
+              <a href="#" class="slideout__list__item">Home</a>
+              <a href="#" class="slideout__list__item">The Way</a>
+              <a href="#" class="slideout__list__item">About</a>
+            </ul>
+          </nav>
+        </div>
+        <div class="way-static-header">
+          <ul class="way-static-header__list">
+            <a href="#" class="way-static-header__list__item">Home</a>
+            <a href="#" class="way-static-header__list__item">The Way</a>
+            <a href="#" class="way-static-header__list__item">About</a>
+          </ul>
+          <h1 class="way-static-header__h1">The Way of the Server</h1>
+        </div>
+    <main class="way-main">
+      <ul class="way-table-of-contents">
+        <h2 class="way-table-of-contents__title">TABLE OF CONTENTS</h2>
+        <a class="way-table-of-contents__item" href="#">Purpose</a>
+        <a class="way-table-of-contents__item" href="#">Audience</a>
+        <a class="way-table-of-contents__item" href="#">Code Example</a>
+      </ul>
+		<div class="tutorial">
+			<p class="tutorial__p">This site was created as a tutorial to help people learn how to host their static sites, and self-host their own back-end APIs that they make to power them.</p>
+      <img class="tutorial__img" src="/images/basicLogo.png">
+      <p class="tutorial__p">Code and assets for this site are open-source. See the <a class="tutorial__p__a" href="https://github.com/emoryhubbard/way-of-the-server">GitHub Repo</a>. By the time you finish the tutorial, you will have built a static site similar to it.</p>
+      <p class="tutorial__p">The two hardest programming challenges I ever faced, were (1) setting up a local PHP development environment, and (2) actually deploying live sites. This web app will be a tutorial site that covers how to do this. I'm going to cover (1) JUST enough so that the reader can be prepared for (2).</p>
+      <p class="tutorial__p">The goal is to deploy a static web app with a self-hosted back-end, and document my progress. It will include a comment system, database, and user authentication. The final product will be tutorial that users can comment on, and add their own perspectives and advice on this difficult process.</p>
+      <h2 class="tutorial__h2"><a class="tutorial__h2__a" href="#">Purpose</a></h2>
+      <p class="tutorial__p">The motto for this tutorial: "let you go down the rabbit holes, but spare you from getting stuck down there." As a stretch goal, I would like to expand the tutorial to include how to go from a self-hosted to a cloud-hosted back-end.</p>
+      <img class="tutorial__img" src="/images/screenshotExample1.png">
+      <p class="tutorial__p">I've taken copious notes in the process of learning how to build a static site, and I want to leverage that experience to show others how to do it. Additionally, I've got lots of notes on how to self-host my own Apache/MySQL/PHP project, and succeeded in getting it running. I want to leverage both of these experiences by using them to create the back-end for a static site.</p>
+      <h2 class="tutorial__h2" id="audience"><a class="tutorial__h2__a" href="#audience">Audience</a></h2>
+      <p class="tutorial__p">The target audience are web development students and enthusiasts. I predict that most of them will likely be either undergrads looking to see how they can make their own side projects, or experienced developers from other backgrounds looking into how to create web apps.</p>
+      <h2 class="tutorial__h2" id="code-example"><a class="tutorial__h2__a" href="#code-example">Code Example</a></h2>
+<pre class="tutorial__pre">.tutorial__h2__a {
+    color: var(--water-blue);
+    padding-left: var(--s-1);
+    padding-right: var(--s-1);
+    text-decoration: none;
+}</pre>      
+    </div></main>
+		<footer class="way-footer">
+      <a href="#" class="way-footer__way-logo way-logo way-logo_centered">
+        <span class="way-logo__way way-logo_sun-yellow">Way</span>
+        <div class="way-logo__of-grid">
+          <div class="way-logo__of way-logo_sun-yellow">of</div>
+          <div class="way-logo__the way-logo_sun-yellow">the</div>
+        </div>
+        <span class="way-logo__server way-logo_sun-yellow">Server</span>
+      </a>
+      <div class="way-footer__links-flexbox">
+      <ul class="way-footer__resources-nav">
+        <p class="way-footer__resources-nav__title">Resources</p>
+        <a class="way-footer__resources-nav__item" href="">Oracle Tutorial</a>
+        <a class="way-footer__resources-nav__item" href="">IBM Docker</a>
+        <a class="way-footer__resources-nav__item" href="">PMAMP Setup</a>
+        <a class="way-footer__resources-nav__item" href="">Traefik Routing</a>
+        <a class="way-footer__resources-nav__item" href="">Local-to-Internet</a>
+        <a class="way-footer__resources-nav__item" href="">Domain Names</a>
+        <a class="way-footer__resources-nav__item" href="">Docker Containers</a>
+        <a class="way-footer__resources-nav__item" href="">Self Hosting</a>
+      </ul>
+      <ul class="way-footer__site-nav">
+        <p class="way-footer__site-nav__title">Site Links</p>
+        <a class="way-footer__site-nav__item" href="">Home</a>
+        <a class="way-footer__site-nav__item" href="">The Way</a>
+        <a class="way-footer__site-nav__item" href="">About</a>
+        <a class="way-footer__site-nav__item" href="">GitHub</a>
+      </ul>
+    </div>
+      <p class="way-footer__copyright">©2023 Emory Hubbard. All Rights Reserved.</p>
+    </footer>
+	   <script src="/js/main.js?t=1680719211535" type="module"></script>
+    </body>
+</html>
+<!--
+              <a href="#" class="slideout__list__item">One</a>
+              <a href="#" class="slideout__list__item">Two</a>
+              <a href="#" class="slideout__list__item">Three</a>
+              <a href="#" class="slideout__list__item">Four</a>
+-->

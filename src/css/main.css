@@ -289,6 +289,7 @@ html, body, .slideout {
 }
 
 .way-static-header__h1 {
+  display: none;
   color: white;
   font-size: var(--s2);
   padding-left: var(--s0);
@@ -397,7 +398,7 @@ html, body, .slideout {
   text-decoration: none;
 }
 
-.tutorial__h2:hover {
+.tutorial__h2__a:hover {
   text-decoration: underline;
 }
 

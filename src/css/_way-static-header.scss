@@ -26,6 +26,7 @@
     cursor: pointer;
   }
 .way-static-header__h1 {
+    display: none;
     color: white;
     font-size: var(--s2);
     padding-left: var(--s0);
