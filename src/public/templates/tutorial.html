@@ -1,16 +1,90 @@
-<p class="tutorial__p">The motto for this tutorial: "let you go down the rabbit holes, but spare you from getting stuck down there." As a stretch goal, I would like to expand the tutorial to include how to go from a self-hosted to a cloud-hosted back-end.</p>
-      <h2 class="tutorial__h2"><a class="tutorial__h2__a" href="#">Purpose</a></h2>
-      <img class="tutorial__img" src="/images/screenshotExample1.png">
-      <p class="tutorial__p">I've taken copious notes in the process of learning how to build a static site, and I want to leverage that experience to show others how to do it. Additionally, I've got lots of notes on how to self-host my own Apache/MySQL/PHP project, and succeeded in getting it running. I want to leverage both of these experiences by using them to create the back-end for a static site.</p>
-      <h2 class="tutorial__h2" id="audience"><a class="tutorial__h2__a" href="#audience">Audience</a></h2>
-      <p class="tutorial__p">The target audience are web development students and enthusiasts. I predict that most of them will likely be either undergrads looking to see how they can make their own side projects, or experienced developers from other backgrounds looking into how to create web apps.</p>
-      <h2 class="tutorial__h2" id="code-example"><a class="tutorial__h2__a" href="#code-example">Code Example</a></h2>
-<pre class="tutorial__pre">.tutorial__h2__a {
-    color: var(--water-blue);
-    padding-left: var(--s-1);
-    padding-right: var(--s-1);
-    text-decoration: none;
-}</pre><!--<p class="tutorial__p">This site was created as a tutorial to help people learn how to host their static sites, and self-host their own back-end APIs that they make to power them.</p>
+<a class="tutorial__p__a" href=""></a>
+<pre class="tutorial__pre"></pre>
+<h2 class="tutorial__h2"><a class="tutorial__h2__a" href="#"></a></h2>
+<p class="tutorial__p"></p>
+
+<h2 class="tutorial__h2"><a class="tutorial__h2__a" href="#">Purpose</a></h2>
+<p class="tutorial__p">In your web development journey, have you ever tried to deploy your site to the internet? This tutorial is intended as a guide to allow you to do so, alerting you of the gotchas and difficult problems before they come. It requires the use of many technologies to even begin.</p>
+<p class="tutorial__p">The motto for this tutorial: "let you go down the rabbit holes, but spare you from getting stuck down there."</p>
+<p class="tutorial__p">The first focus is going to be on getting a static site up and running locally, then deploying it to the cloud. Hosting for static sites is generally pretty easy to come buy, and for modest amounts of traffic, the free hosting services of GitHub Pages or Netlify will be sufficient.</p>
+<p class="tutorial__p">The second focus is going to be on getting you the ability to self-host your own APIs. If you want to make your own static sites have features like comments, reviews, online shopping, etc., you'll need to be able to have your own database and back-end tools to support it. You can learn a great deal about such tools through deploying them locally. We'll also cover how to self-host such tools.</p>
+<p class="tutorial__p">More on the second focus: you'll be introduced to Docker if you haven't been already. This will host a Linux container, essentially a LAMP (Linux, Apache, MySQL, PHP). It will also have PHPMyAdmin with it. The benefit of the setup is it will work for any common OS.</p>
+<h2 class="tutorial__h2"><a class="tutorial__h2__a" href="#">Prerequisites</a></h2>
+<p class="tutorial__p">The main skills you need are (1) good general programming and debugging skills, including being comfortable with GithHub, and (2) experience in building a front-end site with HTML, CSS, and JavaScript.</p>
+<p class="tutorial__p">The skills you can gain are familiarity with more tools and languages: Node and NPM, GitHub Pages and Netlify, Docker, PHP, PHPMyAdmin, MySQL, Traefik, and Networking. Setting up your environments is the main focus here, and where you go from here depends on the projects you end up building with them.</p>
+<h2 class="tutorial__h2"><a class="tutorial__h2__a" href="#"></a>Why Static Sites?</h2>
+<p class="tutorial__p">Many start out their web development journey making the front-end of web sites. This is a skill that extends to the development of the back-end as well.</p>
+<p class="tutorial__p">In fact, many sites have a separate front-end component that interfaces with a back-end system through fetch() API calls in JavaScript. Such a site is called a static site because it doesn't rely on PHP to generate the HTML. Instead, the browser does it all, and only asks for a server's data through JavaScript to appropriately update its web pages. Dynamic sites instead rely on the server to create custom HTML and send it to the browser.</p>
+<p class="tutorial__p">Separating these two concerns--the front-end HTML, CSS, and JS, from the back-end APIs--is the goal of the static site setup. In this way you can configure your server to simply respond to API calls. It is good design system, one among many. Traditional dynamic sites have advantages as well. The main takeaway is that you can do just about anything with both systems, with static sites being my preferred choice.</p>
+<h2 class="tutorial__h2"><a class="tutorial__h2__a" href="#">Static Site Development Environment</a></h2>
+<p class="tutorial__p">The next portion is going to focus on getting a static site up and running in your local development environment.</p>
+<p class="tutorial__p">This tutorial works under the assumption you are using VS Code or a similar code editor of your choice, already installed. If you don't have a code editor local to your machine yet, I recommend installing VS Code and becoming familiar with it. It is easy to switch between different files in different languages, which makes it a popular one for web development.</p>
+<p class="tutorial__p">It also works under the assumpmtion that you are familiar with GitHub, and already have Git installed. If not, be sure to install it before moving on.</p>
+<p class="tutorial__p">Next, install <a class="tutorial__p__a" href="http://nodejs.org/">Node and npm</a>. When you get to the dependencies checkboxes, see the next paragraph. These two go together. Node allows you to run JavaScript outside of the browser, and many web development tools are written in such JavaScript, but they need the Node runtime environment to be executed. The tool we are interested in is npm, which allows us to download many more helpful tools to build our site.</p>
+<p class="tutorial__p">When you are at the dependency checkboxes, you can install the needed Python and C++ dependencies if you don't already have them, so choose accordingly. You may have to tell Node where to find your installations if you already have them.</p>
+<p class="tutorial__p">Next, you can create your project. Create a folder to hold your site's files, and open it in your code editor.</p>
+<p class="tutorial__p">Now, you can create your package.json file. The next command will help you build it with a series of questions. Open your terminal in your code editor and, if you are not already there, navigate to your project folder. Type: </p>
+<pre class="tutorial__pre">npm init</pre>
+<p class="tutorial__p">Now you can add tools to your project that you can install. Some of the tools you will want are Vite (auto refreshes your local browser tab for your site), ESLint (code checker), and Prettier (code formatter). You can add these in, in the devdependencies section of your new package.json:</p>
+<pre class="tutorial__pre">"devDependencies": {
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "jest": "^29.2.2",
+    "prettier": "^2.7.1",
+    "vite": "^4.1.4"
+  }</pre>
+<p class="tutorial__p">Now, you can install the tools:</p>
+<pre class="tutorial__pre">npm install</pre>
+<p class="tutorial__p">Next, you need to configure them to run. Although the packages for the tools are installed, you still need to set up the commands to run them. Add these to your scripts in your package.json:</p>
+<pre class="tutorial__pre">"scripts": {
+    "start": "vite",
+    "build": "vite build --emptyOutDir",
+    "lint": "eslint *.js src/**/*.js",
+    "format": "prettier --ignore-path ./.gitignore --write \"./**/*.{html,json,js,ts,css}\"",
+  }</pre>
+<p class="tutorial__p">At this point, I recommend taking a site you have already made and moving it to your project folder to enhance it. These files should be added in the "src" folder. Or, if you like, you can create a new site of your choice for this project. Either way, you will get a chance to extend or implement new functionality, and deploy it locally and remotely.</p>
+<p class="tutorial__p">Now, try running your site and navigating to a page you are working on:</p>
+<pre class="tutorial__pre">npm run start</pre>
+<p class="tutorial__p">If it runs, congratulations! If your page looks good, even bigger congratulations! The next section will show you how you can deploy your static site remotely on Netlify or GitHub Pages.</p>
+<p class="tutorial__p">If something doesn't work right, or npm install failed, try comparing your package.json and other files to the files in this site's <a class="tutorial__p__a" href="https://github.com/emoryhubbard/way-of-the-server">Repo</a>. Feel free to also use this site as a template, and simply replace the source files in it.</p>
+<h2 class="tutorial__h2"><a class="tutorial__h2__a" href="">Static Site Hosting</a></h2>
+<p class="tutorial__p">Before you can use GitHub Pages or Netlify to host your static site online, you'll need to publish your project folder to a GitHub repo.</p>
+<p class="tutorial__p">Also note that these two services won't be able to host dynamic sites, nor will they be able to host a site with a database or any PHP code. Instead, when you need access to those services for your web app, you will need to isolate them into API calls made by your static site, and use an alternate method to develop and deploy those back-end APIs. That will be covered later on. You're only building and deploying the front-end of your web app for the moment.</p>
+<p class="tutorial__p">Now, you can deploy your site to <a class="tutorial__p__a" href="https://www.netlify.com/">Netlify</a> by heading there and making an account. Alternatively, you can head to GitHub, go to settings on your repo, then go to the Pages section of settings to publish it that way. The rest of the tutorial will assume you are using Netlify, but basically all techniques used here can be used on GitHub Pages. Just be sure that you don't exceed your build minutes limits on Netlify, which should be around 300 minutes a month. It deploys automatically when changes are pushed to your GitHub repo (same for GitHub Pages). If you are building more than that, I recommend sticking with GitHub Pages, or changing your settings so it doesn't deploy automatically.</p>
+<p class="tutorial__p">On Netlify you'll need to click a button to connect to your GitHub account, then when you go to make a new site on the platform, you need to link your desired GitHub repo by giving Netlify access to it through the indicated links.</p>
+<p class="tutorial__p">Once deployed, it is probable that most of your pages won't work, because you still need to add them to your vite.config.js. In order to create the "build" version of your site, Netlify runs the command npm run build for you. That creates a dist folder that holds all your sites actual accessible web pages. When you add pages to your site, be sure to update your vite.config.js to reflect it, like it is done here for my page names: </p>
+<pre class="tutorial__pre">import { resolve } from "path";
+    import { defineConfig } from "vite";
+    
+    export default defineConfig({
+      root: "src/",
+    
+      build: {
+        outDir: "../dist",
+        rollupOptions: {
+          input: {
+            main: resolve(__dirname, "src/index.html"),
+            way: resolve(__dirname, "src/the-way.html"),
+            about: resolve(__dirname, "src/about.html"),
+          },
+        },
+      },
+    });</pre>
+<p class="tutorial__p">Next, you will notice that some or all of your images may be broken. Any images that are present in your project's directories should be moved to a folder named "public" at the root of your site, where the index.html is. This will allow npm run build to output it properly to dist. Note that those output image paths will be in the same directory as index.html in dist, so you don't have to change any of your file paths for your images when you put them into the public folder.</p>
+<p class="tutorial__p">At this point, you should be able to have a working, deployed front-end for your site that is remotely hosted! Next stop is making the back-end for it.</p>
+<h2 class="tutorial__h2"><a class="tutorial__h2__a" href="#">PHP Development Environment</a></h2>
+<p class="tutorial__p">The difficult of setting up the back-end is higher. This is because you won't have somebody else to host your server for you. In the future, there will be tutorials on how to move from self-hosted to cloud-hosted, but at the moment there aren't any free services that use persistent Docker containers that I have been able to get a hold of. Oracle does offer them, but their availability is lower, and render.com offers them, but render.com's will "spin down" after 15 minutes of inactivity, so you have to use their free PostgreSQL instances for persistent storage, which I may explore in a future tutorial.</p>
+<p class="tutorial__p">For these reasons, and because self-hosting is important for learning how to deploy your back-end to a remote service anyway, the goal will be to create a self-hosted back-end.</p>
+<p class="tutorial__p">Before we do, we'll first cover how to set up a local PHP development environment. You will need to install Docker first in this method. It can be quite difficult if you run into errors, but it is worth it, because the alternatives are often more error prone, and less flexible, especially for production deployment on a remote service. Docker containers let you replicate locally EXACTLY the operating environment of your server that you will deploy remotely eventually. In our case, however, we will be sticking to self-hosting, and converting this local development set up to being accesible through the internet towards the end of the tutorial.</p>
+<p class="tutorial__p">Install Docker by following the steps outlined in this <a class="tutorial__p__a" href="https://github.com/emoryhubbard/way-of-the-server/docker-notes.md">Markdown File</a>. It contains my personal notes. It also contains troubleshooting steps. This tutorial will be extended to cover each step as well.</p>
+<p class="tutorial__p">This tutorial will also be extended to cover how to convert your local development enviornment into an internet-accessible PMAMP, completing the goal of self-hosting. <a class="tutorial__p__a" href="https://github.com/emoryhubbard/pmamp">This Repo</a> is very similar to the one mentioned in the Docker install notes, except it has been successfully converted into use as a self-hosted server accessible with an IP address.</p>
+<p class="tutorial__p">See the Resources links in the footer of this site for more essential guides that were useful to me in performing this conversion, so you can configure it to work for you as well. With these tools, it is possible for you to self-host and build your API.</p>
+
+
+
+
+<!--<p class="tutorial__p">This site was created as a tutorial to help people learn how to host their static sites, and self-host their own back-end APIs that they make to power them.</p>
     <img class="tutorial__img" src="/images/basicLogo.png">
     <p class="tutorial__p">Code and assets for this site are open-source. See the <a class="tutorial__p__a" href="https://github.com/emoryhubbard/way-of-the-server">GitHub Repo</a>. By the time you finish the tutorial, you will have built a static site similar to it.</p>
     <p class="tutorial__p">The two hardest programming challenges I ever faced, were (1) setting up a local PHP development environment, and (2) actually deploying live sites. This web app will be a tutorial site that covers how to do this. I'm going to cover (1) JUST enough so that the reader can be prepared for (2).</p>
