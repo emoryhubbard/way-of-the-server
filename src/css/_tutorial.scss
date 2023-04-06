@@ -41,6 +41,9 @@
     margin-left: auto;
     margin-right: auto;
 }
+.tutorial__p1 {
+    margin-top: 0;
+}
 .tutorial__p__a {
     color: var(--water-blue);
     text-decoration: none;
@@ -98,6 +101,9 @@
     margin-right: auto;
     margin-top: var(--tutorial__p-spacing);
     margin-bottom: var(--tutorial__p-spacing);
-    font-size: var(--body-copy);
+    font-size: .7rem;
     max-width: var(--tutorial-max-width);
+    @include utils.breakpoint(medium) {
+        font-size: var(--body-copy);
+    }
 }

@@ -347,6 +347,10 @@ html, body, .slideout {
   margin-right: auto;
 }
 
+.tutorial__p1 {
+  margin-top: 0;
+}
+
 .tutorial__p__a {
   color: var(--water-blue);
   text-decoration: none;
@@ -410,8 +414,13 @@ html, body, .slideout {
   margin-right: auto;
   margin-top: var(--tutorial__p-spacing);
   margin-bottom: var(--tutorial__p-spacing);
-  font-size: var(--body-copy);
+  font-size: 0.7rem;
   max-width: var(--tutorial-max-width);
+}
+@media (min-width: 400px) {
+  .tutorial__pre {
+    font-size: var(--body-copy);
+  }
 }
 
 .way-footer {
@@ -583,6 +592,7 @@ html, body, .slideout {
 }
 
 .way-table-of-contents__title {
+  margin-top: 0;
   font-family: Roboto, sans-serif;
   font-size: 0.7rem;
   font-weight: 500;

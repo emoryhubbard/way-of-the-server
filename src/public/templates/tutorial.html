@@ -2,20 +2,20 @@
 <pre class="tutorial__pre"></pre>
 <h2 class="tutorial__h2"><a class="tutorial__h2__a" href="#"></a></h2>
 <p class="tutorial__p"></p>-->
-<h2 class="tutorial__h2"><a class="tutorial__h2__a" href="#">Purpose</a></h2>
-<p class="tutorial__p">In your web development journey, have you ever tried to deploy your site to the internet? This tutorial is intended as a guide to allow you to do so, alerting you of the gotchas and difficult problems before they come. It requires the use of many technologies to even begin.</p>
+<p class="tutorial__p tutorial__p1">In your web development journey, have you ever tried to deploy your site to the internet? This tutorial is intended as a guide to allow you to do so, alerting you of the gotchas and difficult problems before they come. It requires the use of many technologies to even begin.</p>
+<h2 class="tutorial__h2" id="purpose"><a class="tutorial__h2__a" href="#purpose">Purpose</a></h2>
 <p class="tutorial__p">The motto for this tutorial: "let you go down the rabbit holes, but spare you from getting stuck down there."</p>
 <p class="tutorial__p">The first focus is going to be on getting a static site up and running locally, then deploying it to the cloud. Hosting for static sites is pretty easy to come by, and for modest amounts of traffic, the free hosting services of GitHub Pages or Netlify will be sufficient.</p>
 <p class="tutorial__p">The second focus is going to be on getting you the ability to self-host your own APIs. If you want to make your own static sites have features like comments, reviews, online shopping, etc., you'll need to be able to have your own database and back-end tools to support it. You can learn a great deal about such tools through deploying them locally. We'll also cover how to self-host such tools.</p>
 <p class="tutorial__p">More on the second focus: you'll be introduced to Docker if you haven't been already. This will host a Linux container, essentially a LAMP (Linux, Apache, MySQL, PHP). It will also have PHPMyAdmin with it. The benefit of the setup is it will work for any common OS.</p>
-<h2 class="tutorial__h2"><a class="tutorial__h2__a" href="#">Prerequisites</a></h2>
+<h2 class="tutorial__h2" id="prerequisites"><a class="tutorial__h2__a" href="#prerequisites">Prerequisites</a></h2>
 <p class="tutorial__p">The main skills you need are (1) good general programming and debugging skills, including being comfortable with GithHub, and (2) experience in building a front-end site with HTML, CSS, and JavaScript.</p>
 <p class="tutorial__p">The skills you can gain are familiarity with more tools and languages: Node and NPM, GitHub Pages and Netlify, Docker, PHP, PHPMyAdmin, MySQL, Traefik, and Networking. Setting up your environments is the main focus here, and where you go from here depends on the projects you end up building with them.</p>
-<h2 class="tutorial__h2"><a class="tutorial__h2__a" href="#"></a>Why Static Sites?</h2>
+<h2 class="tutorial__h2" id="why-static-sites"><a class="tutorial__h2__a" href="#why-static-sites">Why Static Sites?</a></h2>
 <p class="tutorial__p">Many start out their web development journey making the front-end of web sites. This is a skill that extends to the development of the back-end as well.</p>
 <p class="tutorial__p">In fact, many sites have a separate front-end component that interfaces with a back-end system through fetch() API calls in JavaScript. Such a site is called a static site because it doesn't rely on PHP to generate the HTML. Instead, the browser does it all, and only asks for a server's data through JavaScript to appropriately update its web pages. Dynamic sites instead rely on the server to create custom HTML and send it to the browser.</p>
 <p class="tutorial__p">Separating these two concerns--the front-end HTML, CSS, and JS, from the back-end APIs--is the goal of the static site setup. In this way you can configure your server to simply respond to API calls. It is good design system, one among many. Traditional dynamic sites have advantages as well. The main takeaway is that you can do just about anything with both systems, with static sites being my preferred choice.</p>
-<h2 class="tutorial__h2"><a class="tutorial__h2__a" href="#">Static Site Development Environment</a></h2>
+<h2 class="tutorial__h2" id="static-site-development-environment"><a class="tutorial__h2__a" href="#static-site-development-environment">Static Site Development Environment</a></h2>
 <p class="tutorial__p">The next portion is going to focus on getting a static site up and running in your local development environment.</p>
 <p class="tutorial__p">This tutorial works under the assumption you are using VS Code or a similar code editor of your choice, already installed. If you don't have a code editor local to your machine yet, I recommend installing VS Code and becoming familiar with it. It is easy to switch between different files in different languages, which makes it a popular one for web development.</p>
 <p class="tutorial__p">It also works under the assumpmtion that you are familiar with GitHub, and already have Git installed. If not, be sure to install it before moving on.</p>
@@ -43,14 +43,16 @@
     "start": "vite",
     "build": "vite build --emptyOutDir",
     "lint": "eslint *.js src/**/*.js",
-    "format": "prettier --ignore-path ./.gitignore --write \"./**/*.{html,json,js,ts,css}\"",
+    "format": "prettier --ignore-path
+        [continued] ./.gitignore --write
+        \"./**/*.{html,json,js,ts,css}\"",
   }</pre>
 <p class="tutorial__p">At this point, I recommend taking a site you have already made and moving it to your project folder to enhance it. These files should be added in the "src" folder. Or, if you like, you can create a new site of your choice for this project. Either way, you will get a chance to extend or implement new functionality, and deploy it locally and remotely.</p>
 <p class="tutorial__p">Now, try running your site and navigating to a page you are working on:</p>
 <pre class="tutorial__pre">npm run start</pre>
 <p class="tutorial__p">If it runs, congratulations! If your page looks good, even bigger congratulations! The next section will show you how you can deploy your static site remotely on Netlify or GitHub Pages.</p>
 <p class="tutorial__p">If something doesn't work right, or npm install failed, try comparing your package.json and other files to the files in this site's <a class="tutorial__p__a" href="https://github.com/emoryhubbard/way-of-the-server">Repo</a>. Feel free to also use this site as a template, and simply replace the source files in it.</p>
-<h2 class="tutorial__h2"><a class="tutorial__h2__a" href="">Static Site Hosting</a></h2>
+<h2 class="tutorial__h2" id="static-site-hosting"><a class="tutorial__h2__a" href="#static-site-hosting">Static Site Hosting</a></h2>
 <p class="tutorial__p">Before you can use GitHub Pages or Netlify to host your static site online, you'll need to publish your project folder to a GitHub repo.</p>
 <p class="tutorial__p">Also note that these two services won't be able to host dynamic sites, nor will they be able to host a site with a database or any PHP code. Instead, when you need access to those services for your web app, you will need to isolate them into API calls made by your static site, and use an alternate method to develop and deploy those back-end APIs. That will be covered later on. You're only building and deploying the front-end of your web app for the moment.</p>
 <p class="tutorial__p">Now, you can deploy your site to <a class="tutorial__p__a" href="https://www.netlify.com/">Netlify</a> by heading there and making an account. Alternatively, you can head to GitHub, go to settings on your repo, then go to the Pages section of settings to publish it that way. The rest of the tutorial will assume you are using Netlify, but basically all techniques used here can be used on GitHub Pages. Just be sure that you don't exceed your build minutes limits on Netlify, which should be around 300 minutes a month. It deploys automatically when changes are pushed to your GitHub repo (same for GitHub Pages). If you are building more than that, I recommend sticking with GitHub Pages, or changing your settings so it doesn't deploy automatically.</p>
@@ -75,7 +77,7 @@
     });</pre>
 <p class="tutorial__p">Next, you will notice that some or all of your images may be broken. Any images that are present in your project's directories should be moved to a folder named "public" at the root of your site, where the index.html is. This will allow npm run build to output it properly to dist. Note that those output image paths will be in the same directory as index.html in dist, so you don't have to change any of your file paths for your images when you put them into the public folder.</p>
 <p class="tutorial__p">At this point, you should be able to have a working, deployed front-end for your site that is remotely hosted! Next stop is making the back-end for it.</p>
-<h2 class="tutorial__h2"><a class="tutorial__h2__a" href="#">PHP Development Environment</a></h2>
+<h2 class="tutorial__h2" id="php-development-environment"><a class="tutorial__h2__a" href="#php-development-environment">PHP Development Environment</a></h2>
 <p class="tutorial__p">The difficult of setting up the back-end is higher. This is because you won't have somebody else to host your server for you. In the future, there will be tutorials on how to move from self-hosted to cloud-hosted, but at the moment there aren't any free services that use persistent Docker containers that I have been able to get a hold of. Oracle does offer them, but their availability is lower, and render.com offers them, but render.com's will "spin down" after 15 minutes of inactivity, so you have to use their free PostgreSQL instances for persistent storage, which I may explore in a future tutorial.</p>
 <p class="tutorial__p">For these reasons, and because self-hosting is important for learning how to deploy your back-end to a remote service anyway, the goal will be to create a self-hosted back-end.</p>
 <p class="tutorial__p">Before we do, we'll first cover how to set up a local PHP development environment. You will need to install Docker first in this method. It can be quite difficult if you run into errors, but it is worth it, because the alternatives are often more error prone, and less flexible, especially for production deployment on a remote service. Docker containers let you replicate locally EXACTLY the operating environment of your server that you will deploy remotely eventually. In our case, however, we will be sticking to self-hosting, and converting this local development set up to being accesible through the internet towards the end of the tutorial.</p>
@@ -88,11 +90,15 @@
 <p class="tutorial__p">Next, check that virtualization is enabled in Task Manager -> Performance -> Virtualization enabled. If you can't find it, continue on and you will see another command that will enable it.</p>
 <p class="tutorial__p">Another prereq is WSL (Windows Subsystem for Linux), because only Linux containers are enabled in Docker for Windows Home edition. It needs to be installed manually (wsl --install can only be used to install Linux distros after the Linux kernel has been manually installed already).</p>
 <p class="tutorial__p">Run Powershell as an admin, and enable WSL:</p>
-<pre class="tutorial__pre">dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart</pre>
+<pre class="tutorial__pre">dism.exe /online /enable-feature
+    /featurename:Microsoft-Windows-Subsystem-Linux
+    /all /norestart</pre>
 <p class="tutorial__p">Check your Windows version again--this time for compatability with the version in this <a class="tutorial__p__a" href="https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-2---check-requirements-for-running-wsl-2">Link</a>. Note that the steps here are almost identical to those in that link, with the exception of step 6, so you can use either. It just makes more sense to install the distro from the command line if you are already there as I indicate below.</p>
 <p class="tutorial__p">There is a Windows feature called Virtual Machine Platform that must be enabled. This is likely the same as the virtualization feature from earlier:</p>
-<pre class="tutorial__pre">dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart</pre>
-<p class="tutorial__p">Now, download the latest <a class="tutorial__p__a" href="https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package">Linux kernel</a>.</p>
+<pre class="tutorial__pre">dism.exe /online /enable-feature
+    /featurename:VirtualMachinePlatform
+    /all /norestart</pre>
+<p class="tutorial__p">Now, download and install the latest <a class="tutorial__p__a" href="https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package">Linux kernel</a>.</p>
 <p class="tutorial__p">Then, make sure your default version is set to WSL 2:</p>
 <pre class="tutorial__pre">wsl --set-default-version 2</pre>
 <p class="tutorial__p">Now you can install a Linux distro:</p>
@@ -104,10 +110,86 @@
 <p class="tutorial__p">If you are stuck on Docker desktop starting, you won't be able to run your containers. The "docker network create traefikNetwork" command won't work and the error will say docker daemon probably isn't running:</p>
 <pre class="tutorial__pre">error during connect: This error may indicate
     that the docker daemon is not running.:[...]</pre>
-<p class="tutorial__p">For me, the fix was to close my Ubunto instance and restart my computer, thanks to answer by olisteadman <a class="tutorial__p__a" href="https://stackoverflow.com/questions/40459280/docker-cannot-start-on-windows">Here.</a> If you are having problems check out that link, as well as <a class="tutorial__p__a" href="https://stackoverflow.com/questions/40459280/docker-cannot-start-on-windows">This One,</a> <a class="tutorial__p__a" href="https://stackoverflow.com/questions/71238673/docker-desktop-starting-forever-on-windows/71258405#71258405">This Other One,</a> <a class="tutorial__p__a" href="https://stackoverflow.com/questions/43041331/docker-forever-in-docker-is-starting-at-windows-task">Another StackOverflow,</a> <a class="tutorial__p__a" href="https://docs.docker.com/desktop/troubleshoot/overview/">This Docker One,</a> <a class="tutorial__p__a" href="https://dev.to/ivanauliaa/when-my-docker-desktop-stuck-on-starting-state-nda#:~:text=After%20further%20investigation%2C%20it%20turns,WSL%20feature%20is%20on%2C%20etc.">And this</a>.</p>
-<p class="tutorial__p">The next step is to choose a project folder that you want to have your PHP back-end in. Once you have it, insert these Docker images into it by cloning this GitHub <a class="tutorial__p__a" href="https://github.com/ammonshepherd/pmamp">Repo</a> there.</p>
-<p class="tutorial__p">This tutorial will also be extended to cover how to convert your local development enviornment into an internet-accessible PMAMP, completing the goal of self-hosting. <a class="tutorial__p__a" href="https://github.com/emoryhubbard/pmamp">This Repo</a> is very similar to the one mentioned in the Docker install notes, except it has been successfully converted into use as a self-hosted server accessible with an IP address.</p>
-<p class="tutorial__p">See the Resources links in the footer of this site for more essential guides that were useful to me in performing this conversion, so you can configure it to work for you as well. With these tools, it is possible for you to self-host and build your API.</p>
+<p class="tutorial__p">For me, the fix was to close my Ubunto instance and restart my computer, thanks to answer by olisteadman <a class="tutorial__p__a" href="https://stackoverflow.com/questions/40459280/docker-cannot-start-on-windows">Here.</a> If you are having problems check out that link, as well as troubleshooting links <a class="tutorial__p__a" href="https://stackoverflow.com/questions/40459280/docker-cannot-start-on-windows">1</a>, <a class="tutorial__p__a" href="https://stackoverflow.com/questions/71238673/docker-desktop-starting-forever-on-windows/71258405#71258405">2</a>, <a class="tutorial__p__a" href="https://stackoverflow.com/questions/43041331/docker-forever-in-docker-is-starting-at-windows-task">3</a>, <a class="tutorial__p__a" href="https://docs.docker.com/desktop/troubleshoot/overview/">4</a>, and <a class="tutorial__p__a" href="https://dev.to/ivanauliaa/when-my-docker-desktop-stuck-on-starting-state-nda#:~:text=After%20further%20investigation%2C%20it%20turns,WSL%20feature%20is%20on%2C%20etc.">5</a>.</p>
+<p class="tutorial__p">The next step is to create project folder for your PHP back-end, and get Docker files that will run the server you want. To do so, clone this GitHub <a class="tutorial__p__a" href="https://github.com/ammonshepherd/pmamp">Repo</a> where you want for your project.</p>
+<p class="tutorial__p">There are two Docker files of interest here. Note that, if you want to, you can run Docker containers without these files. There are Docker commands that will start up a Docker container running a server that you want. That's because you can specify the image name (like Apache or nginx) in the Docker command, and it will be automatically downloaded and used. However, it is much easier to specify your configuration data for these servers in the Docker files. The Docker command would quickly become very long and cryptic.</p>
+<p class="tutorial__p">I find it best to think of the containers as miniature virtual machines running Linux that talk to each other, and the images as the software that the containers are running. The Docker-compose.yml file shows you how many containers will be made when it is run. In this case, you will be running multiple servers. Your database server will be running as MySQL, PHPMyAdmin will act as a server that talks to the database on your behalf with a web interface, Apache (with PHP installed on it) will serve your site's regular web pages, and Traefik is a reverse proxy server that helps direct traffic going to Docker to the right Docker containers, as well as provide the network for interactions between containers.</p>
+<p class="tutorial__p">The Dockerfile is used to create a more customized image than a standard one invoked through a command or in the Docker-compose.yml file. There is one image in the Docker-compose.yml file that you can see is using Dockerfile to be defined, versus the rest which have a definition that corresonds to simply one of the <a class="tutorial__p__a" href="https://hub.docker.com/search?image_filter=official&q=">Official Docker images</a>.</p>
+<p class="tutorial__p">You can build these files on your own. This includes not just the configuration data of the images in the Docker-compose.yml file, but also the configuration of their little network. It is more involved, and it will be necessary when you try to make your local servers finally accessible from the internet, in order to self-host your API. It is involved, however, so for a local development environment, and to just get started developing in PHP, it makes sense to clone an existing good container setup instead.</p>
+<p class="tutorial__p">The next step is to make the repo your own. It is currently cloned from the PMAMP repo, but you can easily make it independent again by deleting the .git folder within it. You can do this by going to VS Code's command pallete, typing "file exclude", and uncommenting the .git folder. By deleting your .git folder, all the Git metadata will be gone and it will behave like it never was a repository. You'll be able to publish it as a new repo.</p>
+<p class="tutorial__p">Next, before you start the containers, you can create their network:</p>
+<pre class="tutorial__pre">docker network create traefikNetwork</pre>
+<p class="tutorial__p">If you get any errors about the Docker daemon not running, be sure to check see that the Docker engine is running (green) in the Docker Desktop app.</p>
+<p class="tutorial__p">Run this command to check on the state of your Docker containers (should be none running):</p>
+<pre class="tutorial__pre">docker ps</pre>
+<p class="tutorial__p">Use this command to intialize and run your servers and Docker containers:</p>
+<p class="tutorial__p">docker compose up</p>
+<p class="tutorial__p">If it looks like the terminal is frozen, that is just because it is in use. You can open a new one if you like. It helps to keep the old ones around so you can hit Ctrl C and docker compose down to close them. You can also do it from Docker desktop.</p>
+<p class="tutorial__p">Now, you should be able to navigate to the PHPMyAdmin page, which is configured to be at the root of the source files in the www folder: <a class="tutorial__p__a" href="http://lvh.me/">http://lvh.me/</a> You can also use http://localhost or the local IP address (127.0.0.1).</p>
+<p class="tutorial__p">If it's running, great work! If not, be persistent and keep troubleshooting and you will eventually get it.</p>
+<p class="tutorial__p">With Docker running locally, you can now begin making your own PHP projects. You can make dynamic websites as well as APIs. Now would be a good time to start on a PHP project to get a working dynamic web page or API to use for your front-end.</p>
+<p class="tutorial__p">Once you have a PHP project you are satisfied with, or want to test, you can self-host it and make it accessible to the outside world, in the next section.</p>
+<h2 class="tutorial__h2" id="php-self-hosting"><a class="tutorial__h2__a" href="#php-self-hosting">PHP Self-Hosting</a></h2>
+<p class="tutorial__p">In order to self-host, one of the first steps is directing web traffic (port 80, port 443) to the computer you want to use as a server on your local network. For this to work, you will need admin access to your router. Older literature will mention binding one port to another and accessing the router through your browser. In my case, the port forwarding rules were only accessible through my ISP's mobile app. You also don't generally need the local IP address of your device anymore either--if you recognize the device name on the network, it is as simple as selecting the device from a dropdown menu and selecting the ports you want it to have.</p>
+<p class="tutorial__p">Now, verify that your Docker's Traefik network is listening on port 80 in your Docker-compose.yml:</p>
+<pre class="tutorial__pre">    command:
+    - "--api.insecure=true"
+    - "--providers.docker=true"
+    - "--providers.docker.exposedbydefault=false"
+    - "--entrypoints.web.address=:80"
+  ports:
+    - "80:80"
+    - "8080:8080"</pre>
+<p class="tutorial__p">In fact, you should be able to access your Traefik app's dashboard by typing in your public IP address into a device that is NOT on your wifi network, for example a phone using data. Be sure to include the final trailing slash at the end of the URL you type in your browser! It will be required for the other services as well. You can find your computer's public IP address by visiting <a class="tutorial__p__a" href="https://www.whatsmyip.org/">whatsmyip</a>.</p>
+<p class="tutorial__p">Reverse proxies, like Traefik, allow you to redirect traffic from one app to another in your Docker network. Other methods often mention assigning specific ports to specific containers, but with a reverse proxy this is unecessary--it can redirect based on URL.</p>
+<p class="tutorial__p">Before going further, you will need to know what apps you are trying to expose to the outside world. In our case, that would be the PHPMyAdmin app (for administrative database viewing and modification), and the Apache server (for our regular web site).</p>
+<p class="tutorial__p">It is the labels section of an image in your Dockercompose.yml which gives you the ability to determine where a request from the outside world gets redirected based on URL. The current labels section for Apache, for example, should look something like this:</p>
+<pre class="tutorial__pre">    labels:
+    - "traefik.enable=true"
+    - "traefik.http.routers.php-apache.rule=Host(`localhost`,
+        `lvh.me`, `pmamp.lvh.me`, `127.0.0.1`)"
+    - "traefik.http.routers.php-apache.entrypoints=web"</pre>
+<p class="tutorial__p">This is what is allowing the localhost connections to send you to the pmamp dashboard when you run your server locally. Now, you can choose to use a URL that fits the name of your site--in my case I chose a generic pmamp name. Simply replace the 9s with your actual public IP address:</p>
+<pre class="tutorial__pre">    labels:
+    - "traefik.enable=true"
+    - "traefik.http.routers.php-apache.rule=Host(`99.999.999.999`)
+        && PathPrefix(`/pmamp`)"
+    - "traefik.http.routers.php-apache.entrypoints=web"</pre>
+<p class="tutorial__p">However, this won't work as expected, even if you create a /pmamp directory in your server. Instead, you need to make the 76.114.198.218/pmamp URL direct to the Apache server, but be READ as simply 76.114.198.218 so you go to the root directory. The key to doing this is the so-called strippedprefix middlewares, which remove the trailing suffix:</p>
+<pre class="tutorial__pre">    labels:
+    - "traefik.enable=true"
+    - "traefik.http.routers.php-apache.rule=Host(`99.999.999.999`)
+        && PathPrefix(`/pmamp`)"
+    - "traefik.http.routers.php-apache.middlewares
+        =php-apache-stripprefix"
+    - "traefik.http.middlewares.php-apache-stripprefix.
+        stripprefix.prefixes=/pmamp"
+    - "traefik.http.middlewares.php-apache-stripprefix.
+        stripprefix.forceSlash=false"
+    - "traefik.http.routers.php-apache.entrypoints=web"</pre>
+<p class="tutorial__p">With this system, the trailing slash must be entered by the user. If you don't enter it when you try to go to eg. /phpmotors, the URL is redirected to 99.999.999.999/phpmotors on the browser. Note that I originally used "test-stripprefix" here instead of "php-apache-stripprefix". You could just as easily use "test". However, -stripprefix lets you remember what it's for. Additionally, I then had to change it to php-apache-stripprefix because it will clash with any other stripprefix middleware you are trying to define in another service with the same name, making the routing not function properly.</p>
+<p class="tutorial__p">Armed with this system, you can then build similar labels in order to be able to access PHPMyAdmin as well, and any other web app on your server (in this case, I chose /pma to represent PHPMyAdmin):</p>
+<pre class="tutorial__pre">    labels:
+    - "traefik.enable=true"
+    - "traefik.http.routers.
+        phpmyadmin.rule=Host(`99.999.999.999`)
+        && PathPrefix(`/pma`)"
+    - "traefik.http.routers.
+        phpmyadmin.middlewares=phpmyadmin-stripprefix"
+    - "traefik.http.middlewares.
+        phpmyadmin-stripprefix.stripprefix.prefixes=/pma"
+    - "traefik.http.middlewares.
+        phpmyadmin-stripprefix.stripprefix.forceSlash=false"
+    - "traefik.http.routers.phpmyadmin.entrypoints=web"</pre>
+<p class="tutorial__p">Note that when you try to sign in, you will get a 404 error, but you can get on afterwards by using the /pma/ URL (ie. the back button). It seems to continue to work normally after that. I noticed that the sign-in URL had the /pma missing when hitting the sign-in button, which was why there was a 404 error. Needs to be fixed, but remains usable.</p>
+<p class="tutorial__p">If you are running into any issues that you believe are code-related, you can use this <a class="tutorial__p__a" href="https://github.com/emoryhubbard/pmamp">Repo</a> for troubleshooting and as a template for your site. It has been fully converted and tested. All that is needed is to have your public IP address plugged into the 9s.</p>
+<p class="tutorial__p">If you successfully got it running, time to celebrate! It is not small feat!</p>
+<h2 class="tutorial__h2" id="whats-next"><a class="tutorial__h2__a" href="#whats-next">What's Next?</a></h2>
+<p class="tutorial__p">Getting a free (or paid) domain name, and setting up SSL for your web app are some logical next steps. In addition, another huge leap forward would be to move from self-hosting to cloud-hosting. Right now, I'm working on a bot script that you can run to help get compute instances on the Oracle Free Tier (which tend to suffer from low availability)--it just hasn't snagged one yet despite running for about 2 weeks. If you wanted to use it, you would need to configure the positions of clicks for reauthentication to work for your screen manually in the batch files. You can see it on <a class="tutorial__p__a" href="https://github.com/emoryhubbard/remote-docker-script"></a>This Repo.</p>
+<p class="tutorial__p">Another practical option for cloud-hosting for free is using render.com. You would just need to refactor your API (or make a new one) to use PostgreSQL instances on render.com instead of MySQL within the same Docker container.</p>
+<p class="tutorial__p">You can also start using your API to power your front-end of your sites! The sky is the limit in terms of what kind of web app you could make, now that you can persistently store all user data in a centralized location. Dream big dreams!</p>
+<!--<p class="tutorial__p">This tutorial will also be extended to cover how to convert your local development enviornment into an internet-accessible PMAMP, completing the goal of self-hosting. <a class="tutorial__p__a" href="https://github.com/emoryhubbard/pmamp">This Repo</a> is one I built from the same PMAMP repo used above, except it has been successfully converted into use as a self-hosted server accessible with an IP address.</p>
+<p class="tutorial__p">See the Resources links in the footer of this site for more essential guides that were useful to me in performing this conversion, so you can configure it to work for you as well. With these tools, it is possible for you to self-host and build your API.</p>-->
 <!--<p class="tutorial__p">This site was created as a tutorial to help people learn how to host their static sites, and self-host their own back-end APIs that they make to power them.</p>
     <img class="tutorial__img" src="/images/basicLogo.png">
     <p class="tutorial__p">Code and assets for this site are open-source. See the <a class="tutorial__p__a" href="https://github.com/emoryhubbard/way-of-the-server">GitHub Repo</a>. By the time you finish the tutorial, you will have built a static site similar to it.</p>
